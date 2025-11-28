@@ -44,7 +44,9 @@ we provide an overview of test accuracy under different values of `a` and `b`, i
 
 <img src="./figures/test_acc_best.png" width="49%"> <img src="./figures/test_acc_final.png" width="49%">
 
-We create 3D visualizations that can be viewed from different angles, as shown below. You can click [here](./html/test_acc_best.html) and [here](./html/test_acc_final.html) to adjust the angles yourself.
+We create 3D visualizations that can be viewed from different angles, as shown below. You can download here: [test_acc_best](./html/test_acc_best.html) \\ [test_acc_final](./html/test_acc_final.html).
+
+These html files can be opened locally, allowing you to rotate and view them in the browser, as well as check the specific accuracy for all values of `a` and `b`.
 
 <img src="./figures/3d_best.png" width="49%"> <img src="./figures/3d_final.png" width="49%">
 
