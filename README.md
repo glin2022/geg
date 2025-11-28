@@ -9,12 +9,14 @@ According to the paper, this repository implements the Generalized Exponentiated
 <!-- 首先，我们进一步调整了Eq. (24)如下： -->
 ### First,
 we further adjust Eq. (24) as follows:
-$$
+
+$
 \log^{E}_{a,b}(x)
 = \frac{x^a - x^b}{a-b}
 = \frac{\exp(r \ln(x))}{\kappa} \,\sinh(\kappa \ln(x)) \\
 = \exp(r \ln(x)) \cdot \ln(x) \cdot \mathrm{sinhc}(\kappa \ln(x)),
-$$
+$
+
 <!-- 新的形式在某些形式上更加直观，比如对于EG来说，a=b=0，即r=k=0，而k出现在分母位置可能引起误解。 -->
 where $\mathrm{sinhc}(z) = \sinh(z) / z$. This new form is more intuitive in some ways. For example, for EG, we have $\log^{E}_{0,0}(x)=\ln(x)$, where both $r$ and $\kappa$ are zero, while having $\kappa$ in the denominator may cause misunderstanding. The above new formula is defined as _log_geom(), see lines 23-74 in geg.py.
 
