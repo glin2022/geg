@@ -4,14 +4,12 @@ Code for *[Generalized Exponentiated Gradient Algorithms Using the Euler Two-Par
 According to the paper, this repository implements the Generalized Exponentiated Gradient (GEG) optimizers, including the GEGP optimizer for positive domain (Section 5: GEG Updates) and the GEG optimizer for bipolar domain (Section 6: GEG Updates for Bipolar Weights). In experiments, the GEG optimizer demonstrates more stable performance.
 
 <!-- 以下以GEG optimizer为例，对geg.py进行说明. 实验在这部分之后。 -->
-**Below is an explanation of geg.py using the GEG optimizer as an example. The experiments follow this part.**
-
-***
+**Below is an explanation of `geg.py` using the GEG optimizer as an example. The experiments follow this part.**
 
 <!-- 首先，我们进一步调整了Eq. (24)如下： 新的形式在某些形式上更加直观，比如对于EG来说，a=b=0，即r=k=0，而k出现在分母位置可能引起误解。-->
 ### First,
 we further adjust Eq. (24) as follows: \
-<img src="./figures/eq24.png" width=600> \
+<img src="./figures/eq24.png" width=500> \
 where $\mathrm{sinhc}(z) = \sinh(z) / z$. This new form is more intuitive in some ways. For example, for EG, we have $\log^{E}_{0,0}(x)=\ln(x)$, where both $r$ and $\kappa$ are zero, while having $\kappa$ in the denominator may cause misunderstanding. The above new formula is defined as `_log_geom()`, see `lines 23-74 in geg.py`.
 
 <!-- 接下来，我们实现了对Euler (a, b)-log的求逆的算法. 文章中对Lambert–Tsallis方法进行了讨论，并Lagrange‘s inversion方法作为一种简单的替代方案。Although the Euler (a,b)-exponential admits a formal series expansion via the Lagrange inversion theorem, such expansions are not numerically practical for deep learning.
@@ -40,12 +38,16 @@ Referring to Figure 1 in page 9, we vary `a` from `[-4, 4]` and `b` from `[0, 1]
 
 <!-- 首先，我们给出了一个overview：在不同ab下的测试准确率，包括（a）在训练过程中的最高准确率，以及（b）迭代在最后一轮的准确率。 -->
 ### First,
-we provide an overview of test accuracy under different values of `a` and `b`, including the highest accuracy during training and the accuracy at the last iteration. \
+we provide an overview of test accuracy under different values of `a` and `b`, including the highest accuracy during training and the accuracy at the last iteration.
+
 <img src="./figures/test_acc_best.png" width="49%"> <img src="./figures/test_acc_final.png" width="49%">
 
-We create 3D visualizations that can be viewed from different angles, as shown below. You can download here: [test_acc_best](./html/test_acc_best.html) \\ [test_acc_final](./html/test_acc_final.html).
+We create 3D visualizations that can be viewed from different angles, as shown below. You can download here: [test_acc_best](./html/test_acc_best.html) \\ [test_acc_final](./html/test_acc_final.html). Please click the button on the right side.
 
-These html files can be opened locally, allowing you to rotate and view them in the browser, as well as check the specific accuracy for all values of `a` and `b`. \
+![download](./figures/download.png)
+
+These html files can be opened locally, allowing you to rotate and view them in the browser, as well as check the specific accuracy for all values of `a` and `b`.
+
 <img src="./figures/3d_best.png" width="49%"> <img src="./figures/3d_final.png" width="49%">
 
 
