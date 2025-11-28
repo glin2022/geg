@@ -6,12 +6,12 @@ According to the paper, this repository implements the Generalized Exponentiated
 <!-- 以下以GEG optimizer为例，对geg.py进行说明. 实验在这部分之后。 -->
 **Below is an explanation of geg.py using the GEG optimizer as an example. The experiments follow this part.**
 
+***
+
 <!-- 首先，我们进一步调整了Eq. (24)如下： 新的形式在某些形式上更加直观，比如对于EG来说，a=b=0，即r=k=0，而k出现在分母位置可能引起误解。-->
 ### First,
-we further adjust Eq. (24) as follows:
-
-<img src="./figures/eq24.png" width=600>
-
+we further adjust Eq. (24) as follows: \
+<img src="./figures/eq24.png" width=600> \
 where $\mathrm{sinhc}(z) = \sinh(z) / z$. This new form is more intuitive in some ways. For example, for EG, we have $\log^{E}_{0,0}(x)=\ln(x)$, where both $r$ and $\kappa$ are zero, while having $\kappa$ in the denominator may cause misunderstanding. The above new formula is defined as `_log_geom()`, see `lines 23-74 in geg.py`.
 
 <!-- 接下来，我们实现了对Euler (a, b)-log的求逆的算法. 文章中对Lambert–Tsallis方法进行了讨论，并Lagrange‘s inversion方法作为一种简单的替代方案。Although the Euler (a,b)-exponential admits a formal series expansion via the Lagrange inversion theorem, such expansions are not numerically practical for deep learning.
@@ -40,14 +40,12 @@ Referring to Figure 1 in page 9, we vary `a` from `[-4, 4]` and `b` from `[0, 1]
 
 <!-- 首先，我们给出了一个overview：在不同ab下的测试准确率，包括（a）在训练过程中的最高准确率，以及（b）迭代在最后一轮的准确率。 -->
 ### First,
-we provide an overview of test accuracy under different values of `a` and `b`, including the highest accuracy during training and the accuracy at the last iteration.
-
+we provide an overview of test accuracy under different values of `a` and `b`, including the highest accuracy during training and the accuracy at the last iteration. \
 <img src="./figures/test_acc_best.png" width="49%"> <img src="./figures/test_acc_final.png" width="49%">
 
 We create 3D visualizations that can be viewed from different angles, as shown below. You can download here: [test_acc_best](./html/test_acc_best.html) \\ [test_acc_final](./html/test_acc_final.html).
 
-These html files can be opened locally, allowing you to rotate and view them in the browser, as well as check the specific accuracy for all values of `a` and `b`.
-
+These html files can be opened locally, allowing you to rotate and view them in the browser, as well as check the specific accuracy for all values of `a` and `b`. \
 <img src="./figures/3d_best.png" width="49%"> <img src="./figures/3d_final.png" width="49%">
 
 
@@ -66,14 +64,13 @@ Figure 1 in the paper shows that the curve for `a < 0 < b` is moderately curved,
 <!-- 此外，尽管文章申明使用ab两个可以更加灵活，同时可以统一已有的logarithm，但从实验准确率的指标上观察，最好的结果集中于a=0或者b=0的情况，这可能说明两个超参数虽然更加灵活，但也更难选择。 -->
 Additionally, the paper uses both `a` and `b` allows for greater flexibility and unifies existing logarithms. From the experimental results, the best results are concentrated in cases where either `a = 0` or `b = 0`, which may indicate that while having two hyperparameters provides more flexibility, it also makes more challenging.
 
-
 <!-- Next, 我们从训练过程中的准确率/损失的曲线图进行对比。我们选择了几种文章中常见的geometry，包括standard EG，Tsallis q-log，Kaniadakis κ-log，同时我们还加入了深度学习中的经典优化器，SGD与文章中的general Euler (a,b)-log进行对比。我们根据上面的内容选择最高准确率下的ab进行对比，其中a=1.6, b=0.0 -->
 ### Next,
 we compare the accuracy/loss curves during the training process. We select several geometries commonly used in the paper, including standard EG, Tsallis q-log, and Kaniadakis $\kappa$-log. Additionally, we include the classic optimizer SGD from deep learning for comparison with the general Euler (a,b)-log discussed in the paper. Based on the previous results, we choose `a = 1.6` and `b = 0.0` for comparison, as they yield the highest test accuracy.
 
-Training accuracy and loss curves:
-<img src="./figures/train_acc.png" width="49%"> <img src="./figures/train_loss.png" width="49%">
-Testing accuracy and loss curves:
+Training accuracy and loss curves: \
+<img src="./figures/train_acc.png" width="49%"> <img src="./figures/train_loss.png" width="49%"> \
+Testing accuracy and loss curves: \
 <img src="./figures/test_acc.png" width="49%"> <img src="./figures/test_loss.png" width="49%">
 
 <!-- 在选择了特定的ab后，GEG优化器确实实现了优异的性能，在高于其他logarithm的同时，性能几乎和SGD相当，展现出了其作为优化器的潜力。正如上面说的，目前是通过遍历的方式来确定最优的ab，在实际使用中，ab的选择可能是一个挑战。 -->
@@ -83,8 +80,7 @@ With the selected optimal `a` and `b`, the GEG optimizer achieves excellent perf
 ### Finally,
 we present 3D plots for a specific value of `b`, where the x and y axes represent parameter `a` and `number of iterations`, respectively, and the z axis represents the corresponding value (`accuracy or loss`). Below, we only show the results for `b = 0.0`; other results can be found in ./figures/ and ./html/ directories.
 
-<img src="./figures/test_acc_b0.0.png" width="49%"> <img src="./figures/test_loss_b0.0.png" width="49%">
-
+<img src="./figures/test_acc_b0.0.png" width="49%"> <img src="./figures/test_loss_b0.0.png" width="49%"> \
 <img src="./figures/3d_test_acc.png" width="49%"> <img src="./figures/3d_test_loss.png" width="49%">
 
 <!-- 实验部分所展示的所有结果均由visual.ipynb生成. -->
