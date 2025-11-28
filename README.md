@@ -9,7 +9,8 @@ According to the paper, this repository implements the Generalized Exponentiated
 <!-- 首先，我们进一步调整了Eq. (24)如下： 新的形式在某些形式上更加直观，比如对于EG来说，a=b=0，即r=k=0，而k出现在分母位置可能引起误解。-->
 ### First,
 we further adjust Eq. (24) as follows:
-<img src="./figures/eq24.png" width=200>
+
+<img src="./figures/eq24.png" width=600>
 
 where $\mathrm{sinhc}(z) = \sinh(z) / z$. This new form is more intuitive in some ways. For example, for EG, we have $\log^{E}_{0,0}(x)=\ln(x)$, where both $r$ and $\kappa$ are zero, while having $\kappa$ in the denominator may cause misunderstanding. The above new formula is defined as `_log_geom()`, see `lines 23-74 in geg.py`.
 
@@ -43,7 +44,7 @@ we provide an overview of test accuracy under different values of `a` and `b`, i
 
 <img src="./figures/test_acc_best.png" width="49%"> <img src="./figures/test_acc_final.png" width="49%">
 
-We create 3D visualizations that can be viewed from different angles, as shown below. You can click [here](./html/3d_best.html) and [here](./html/3d_final.html) to adjust the angles yourself.
+We create 3D visualizations that can be viewed from different angles, as shown below. You can click [here](./html/test_acc_best.html) and [here](./html/test_acc_final.html) to adjust the angles yourself.
 
 <img src="./figures/3d_best.png" width="49%"> <img src="./figures/3d_final.png" width="49%">
 
